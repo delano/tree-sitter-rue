@@ -1,0 +1,22 @@
+<!-- Multiple comments and edge cases -->
+
+<SCHEMA lang='ts-zod'>
+// Case-insensitive tags
+// Single-quoted attribute
+const x = { test: true }
+</SCHEMA>
+
+<!-- Comment between sections -->
+
+<Template>
+  <div>
+    <!-- Nested comment -->
+    <p>Mixed case template tag</p>
+  </div>
+</Template>
+
+<logic>
+# Empty sections below are valid
+</logic>
+
+<data></data>

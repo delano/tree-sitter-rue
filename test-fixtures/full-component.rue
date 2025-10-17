@@ -1,0 +1,64 @@
+<schema lang="ts-zod" version="2" envelope="user" extends="BaseSchema">
+import { z } from 'zod'
+
+export const ProductSchema = z.object({
+  id: z.number(),
+  name: z.string().min(3).max(100),
+  price: z.number().positive(),
+  description: z.string(),
+  inStock: z.boolean(),
+  category: z.enum(['electronics', 'clothing', 'books']),
+  tags: z.array(z.string()).optional(),
+})
+</schema>
+
+<data window="product">
+{
+  "currency": "USD",
+  "tax_rate": 0.08,
+  "shipping_cost": 5.99
+}
+</data>
+
+<template>
+<div class="product-card" data-product-id="{{id}}">
+  <h3 class="product-name">{{name}}</h3>
+  
+  <div class="product-price">
+    <span class="price">${{price}}</span>
+    <span class="currency">{{currency}}</span>
+  </div>
+  
+  <p class="product-description">{{description}}</p>
+  
+  <div class="product-meta">
+    <span class="category">{{category}}</span>
+    
+    {{#if inStock}}
+      <span class="badge in-stock">In Stock</span>
+    {{else}}
+      <span class="badge out-of-stock">Out of Stock</span>
+    {{/if}}
+  </div>
+  
+  {{#if tags}}
+    <div class="tags">
+      {{#each tags}}
+        <span class="tag">{{this}}</span>
+      {{/each}}
+    </div>
+  {{/if}}
+  
+  <button class="add-to-cart" {{#unless inStock}}disabled{{/unless}}>
+    Add to Cart
+  </button>
+</div>
+</template>
+
+<logic>
+# Product validation and business logic
+# - Price must include tax calculation
+# - Check inventory before displaying "Add to Cart"
+# - Category determines shipping options
+# - Tags are indexed for search functionality
+</logic>

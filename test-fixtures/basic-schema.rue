@@ -1,0 +1,27 @@
+<schema lang="ts-zod">
+import { z } from 'zod'
+
+export const UserSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  age: z.number().optional(),
+})
+</schema>
+
+<template>
+<div class="user-card">
+  <h2>User Profile</h2>
+  <p><strong>Name:</strong> {{name}}</p>
+  <p><strong>Email:</strong> {{email}}</p>
+  {{#if age}}
+    <p><strong>Age:</strong> {{age}}</p>
+  {{/if}}
+</div>
+</template>
+
+<logic>
+# Validation logic
+# - Ensure email is unique
+# - Age must be 18+ if provided
+</logic>
