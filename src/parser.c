@@ -1,6 +1,7 @@
 #include "tree_sitter/parser.h"
 
 #if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 #endif
 
@@ -15,7 +16,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 8
 #define PRODUCTION_ID_COUNT 1
 
-enum ts_symbol_identifiers {
+enum {
   anon_sym_LT = 1,
   anon_sym_GT = 2,
   anon_sym_LT_SLASH = 3,
@@ -45,7 +46,7 @@ enum ts_symbol_identifiers {
   aux_sym_schema_element_repeat1 = 27,
 };
 
-static const char * const ts_symbol_names[] = {
+static const char *ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
   [anon_sym_LT] = "<",
   [anon_sym_GT] = ">",
