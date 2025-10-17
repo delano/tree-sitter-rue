@@ -1,7 +1,6 @@
 node_modules
 build
 *.log
-src/tree_sitter/
 /build
 /node_modules
 
